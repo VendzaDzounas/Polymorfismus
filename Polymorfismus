@@ -1,0 +1,58 @@
+using System;
+
+namespace Polymorfismus
+{
+    class User
+    {
+        public string jmeno;
+        public string heslo;
+        public User(string Jmeno, string Heslo)
+        {
+            jmeno = Jmeno;
+            heslo = Heslo;
+        }
+        public virtual void Vypis()
+        {
+            Console.WriteLine(jmeno);
+            Console.WriteLine(heslo);
+        }
+    }
+    class Admin : User
+    {
+        public string password;
+        public Admin(string Password, string Jmeno, string Heslo) : base(Jmeno, Heslo)
+        {
+            password = Password;
+        }
+        public override void Vypis()
+        {
+            Console.WriteLine(jmeno);
+            Console.WriteLine(heslo);
+            Console.WriteLine(password);
+        }
+    }
+    class Student : User
+    {
+        public int id;
+        public Student(int ID, string Jmeno, string Heslo) : base(Jmeno, Heslo)
+        {
+            id = ID;
+        }
+        public override void Vypis()
+        {
+            Console.WriteLine(id);
+            Console.WriteLine(jmeno);
+            Console.WriteLine(heslo);
+        } 
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Admin admin1 = new Admin("666", "Venca", "Džounas");
+            Student student1 = new Student(0, "Ralof", "Dovakhiin");
+
+            admin1.Vypis();
+        }
+    }
+}
